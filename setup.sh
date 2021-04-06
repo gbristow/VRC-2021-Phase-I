@@ -68,6 +68,11 @@ echo "Creating Python virtual environment"
 bar
 # this doesn't overwrite it if it already exists
 python3.8 -m venv $VENV_P1_DIR --prompt "VRC Phase 1"
+# update pip
+source $VENV_P1_DIR/bin/activate
+python -m pip install pip --upgrade
+deactivate
+
 echo "Environment created at $VENV_P1_DIR"
 echo "Activate this environment with 'source $VENV_P1_DIR/bin/activate'"
 bar
