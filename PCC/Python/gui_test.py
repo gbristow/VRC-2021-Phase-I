@@ -1,5 +1,5 @@
 #Qt GUI application for testing the PCC functionality
-#written by Patrick Smith
+#written by Patrick Smith, with guest appearance by Casey Hanner
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget
 from PySide6.QtCore import Qt, QThread, Signal, QObject
 from PySide6.QtGui import QColor, QPalette, QFont
@@ -39,7 +39,7 @@ class MainWindow(QMainWindow):
     def setupMainWindowUi(self):
         self.ui.setupUi(self)
 
-        # update PWM cmd based on slider / spinbox
+        # update actuator percentage cmd based on slider / spinbox
         self.ui.actuator_1_dial.valueChanged.connect(self.actuator_generator(0))
         self.ui.actuator_2_dial.valueChanged.connect(self.actuator_generator(1))
         self.ui.actuator_3_dial.valueChanged.connect(self.actuator_generator(2))
@@ -50,6 +50,7 @@ class MainWindow(QMainWindow):
         self.ui.green_led_slider.valueChanged.connect(self.updateRGBcmd)
         self.ui.blue_led_slider.valueChanged.connect(self.updateRGBcmd)
 
+        #call the special open/close command on button click 
         self.ui.actuator_1_toggle.pressed.connect(self.toggleGenerator(0))
         self.ui.actuator_2_toggle.clicked.connect(self.toggleGenerator(1))
         self.ui.actuator_3_toggle.clicked.connect(self.toggleGenerator(2))
@@ -57,7 +58,11 @@ class MainWindow(QMainWindow):
 
 
     def connectToPCC(self):
-        # this function establishes the serial connection to the PCC based on available COM ports
+        '''
+        this function establishes the serial connection to the PCC based on available COM ports
+        or shows the debug output if no com ports are found
+        '''
+        
         try:
             port = self.setup.ui.COM_Port_comboBox.currentText()
             baud = self.setup.ui.Baud_Rate_comboBox.currentText()
@@ -84,22 +89,33 @@ class MainWindow(QMainWindow):
     
 
     def updateActuatorCmd(self, actuator, value):
-        # whenever any of the dials change, this function gets called to 
-        # update the PCC with the most current command for all 4 actuators
+        '''
+        whenever any of the dials change, this function gets called to 
+        update the PCC with the most current command for all 4 actuators
+        '''
+      
 
         # collect the most current pwm commands
         try:
             self.pcc.set_servo_pct(actuator, value)
-            #print(f"{actuator}:{value}")
         except AttributeError as ae:
             print("Can't sent serial command, Serial Port not set up...")
 
     def actuator_generator(self, actuator):
+        '''
+        creates a template of the "updateActuatorCmd" with the actuator hardcoded to "actuator" 
+
+        that way the resulting template can take in just the "value" parameter and be used with the Qt callback
+        '''
+
         def updateActuatorCmd(value):
             self.updateActuatorCmd(actuator, value)
         return updateActuatorCmd
 
     def toggleActuator(self, actuator):
+        '''
+        toggles the specified actuator (based on appications recorded state, not PCCs internal state)
+        '''
         if actuator in range(0,4):
             if self.actuator_states[actuator] == 1:
                 self.pcc.set_servo_open_close(actuator, "close")
@@ -114,8 +130,10 @@ class MainWindow(QMainWindow):
         return toggle
 
     def updateRGBcmd(self, val):
-        # whenever any of the RGB commands change, this function gets called to 
-        # update the PCC with the most current RGB commands for the LED strip
+        '''
+        whenever any of the RGB commands change, this function gets called to 
+        update the PCC with the most current RGB commands for the LED strip
+        '''
 
         # collect the most current pwm commands
         red = self.ui.red_led_slider.value()
