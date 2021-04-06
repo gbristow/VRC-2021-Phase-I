@@ -37,7 +37,7 @@ bar
 echo "Installing prerequisites"
 bar
 # install some useful prereqs
-sudo apt install git make apt-utils software-properties-common wget unzip htop nano -y
+sudo apt install -y git make apt-utils software-properties-common wget unzip htop nano
 
 cd $VRC_P1_DIR
 # cache the git credentials (mainly during development)
@@ -70,13 +70,6 @@ bar
 python3.8 -m venv $VENV_P1_DIR --prompt "VRC Phase 1"
 echo "Environment created at $VENV_P1_DIR"
 echo "Activate this environment with 'source $VENV_P1_DIR/bin/activate'"
-bar
-
-echo "Final Setup"
-bar
-# install jtop and nano text editor
-sudo -H python3 -m pip install -U jetson-stats
-sudo apt install nano
 bar
 
 echo "Installing final utilities"
