@@ -16,7 +16,7 @@ void VRCServo::close_servo(uint8_t servo)
     setPWM(servo,0,servo_min);
 }
 
-void VRCServo::set_servo_angle(uint8_t servo, uint8_t percent)
+void VRCServo::set_servo_percent(uint8_t servo, uint8_t percent)
 {
     if (percent > 100) percent = 100;
 

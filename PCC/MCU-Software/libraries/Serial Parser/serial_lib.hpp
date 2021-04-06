@@ -16,7 +16,7 @@ typedef enum
 
 typedef enum
 {
-    SET_SERVO,
+    SET_SERVO_OPEN_CLOSE,
     SET_SERVO_MIN,
     SET_SERVO_MAX,
     SET_SERVO_PCT,

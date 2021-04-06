@@ -119,7 +119,7 @@ void VRCSerialParser::poll(void)
                 //try to parse message into message object.
                 packet_t msg;
 
-                if (data_bytes[0] >= SET_SERVO && data_bytes[0] < COMMAND_END) //this is a valid command
+                if (data_bytes[0] >= SET_SERVO_OPEN_CLOSE && data_bytes[0] < COMMAND_END) //this is a valid command
                 {
                     msg.command = data_bytes[0];              //copy command into msg struct
                     memcpy(&msg.data,&data_bytes[1],length-1); //copy from command byte to end of msg into msg.data

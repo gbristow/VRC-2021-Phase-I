@@ -14,7 +14,7 @@ class VRCServo : public Adafruit_PWMServoDriver
 
     void open_servo(uint8_t servo);
     void close_servo(uint8_t servo);
-    void set_servo_angle(uint8_t servo, uint8_t percent);
+    void set_servo_percent(uint8_t servo, uint8_t percent);
     void set_servo_min();
     void set_servo_max();
     uint8_t check_controller(void);

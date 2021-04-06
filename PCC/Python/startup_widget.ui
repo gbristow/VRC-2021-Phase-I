@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>RCC_startup</class>
- <widget class="QWidget" name="RCC_startup">
+ <class>VRC_startup</class>
+ <widget class="QWidget" name="VRC_startup">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -55,7 +55,7 @@ border: 2px solid rgb(27, 29, 35);
 padding-left: 5px;</string>
      </property>
      <property name="text">
-      <string>RCC ADU Connect</string>
+      <string>VRC PCC Test Tool</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -112,44 +112,14 @@ padding-left: 3px;
 background-color: rgb(235, 235, 235);</string>
      </property>
      <property name="currentText">
-      <string extracomment="COM Port">1000000</string>
+      <string extracomment="COM Port">115200</string>
      </property>
      <property name="maxCount">
       <number>10</number>
      </property>
      <item>
       <property name="text">
-       <string>1000000</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>460800</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>230400</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
        <string>115200</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>57600</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>38400</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>9600</string>
       </property>
      </item>
     </widget>
@@ -163,7 +133,7 @@ background-color: rgb(235, 235, 235);</string>
       </size>
      </property>
      <property name="autoFillBackground">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="styleSheet">
       <string notr="true">font: 87 12pt &quot;Arial Black&quot;;

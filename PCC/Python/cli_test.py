@@ -96,24 +96,24 @@ class VRC_peripheral_test(object):
                     self.vrc_p.reset_vrc_peripheral()
                 
                 elif kinput == b'4':
-                    self.vrc_p.set_servo(0, 'open')
+                    self.vrc_p.set_servo_open_close(0, 'open')
                 elif kinput == b'1':
-                    self.vrc_p.set_servo(0, 'close')
+                    self.vrc_p.set_servo_open_close(0, 'close')
                 
                 elif kinput == b'5':
-                    self.vrc_p.set_servo(1, 'open')
+                    self.vrc_p.set_servo_open_close(1, 'open')
                 elif kinput == b'2':
-                    self.vrc_p.set_servo(1, 'close')
+                    self.vrc_p.set_servo_open_close(1, 'close')
                 
                 elif kinput == b'6':
-                    self.vrc_p.set_servo(2, 'open')
+                    self.vrc_p.set_servo_open_close(2, 'open')
                 elif kinput == b'3':
-                    self.vrc_p.set_servo(2, 'close')
+                    self.vrc_p.set_servo_open_close(2, 'close')
 
                 elif kinput == b'+':
-                    self.vrc_p.set_servo(3, 'open')
+                    self.vrc_p.set_servo_open_close(3, 'open')
                 elif kinput == b'\r':
-                    self.vrc_p.set_servo(3, 'close')
+                    self.vrc_p.set_servo_open_close(3, 'close')
                 elif kinput == b'z':
                     self.vrc_p.check_servo_controller()
                 else:

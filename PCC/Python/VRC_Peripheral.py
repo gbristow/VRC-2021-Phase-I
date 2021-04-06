@@ -12,7 +12,7 @@ class VRC_peripheral(object):
         self.HEADER_INCOMING = (*self.PREAMBLE, 0x3e)
 
         self.commands = {
-            'SET_SERVO':0,
+            'SET_SERVO_OPEN_CLOSE':0,
             'SET_SERVO_MIN':1,
             'SET_SERVO_MAX':2,
             'SET_SERVO_PCT':3,
@@ -82,10 +82,10 @@ class VRC_peripheral(object):
             print("VRC_Peripheral serial data: ")
             print(data)
     
-    def set_servo(self,servo, action):
+    def set_servo_open_close(self,servo, action):
         valid_command = False
 
-        command = self.commands['SET_SERVO']
+        command = self.commands['SET_SERVO_OPEN_CLOSE']
         length = 3 # command + servo + action
         data = []
 
