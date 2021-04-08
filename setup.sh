@@ -4,8 +4,8 @@
 set -e
 
 # setup directory constants
-VRC_P1_DIR=~/Documents/vrc_phase1
-VENV_P1_DIR=~/Documents/vrc_phase1/.venv
+VRC_P1_DIR=~/Documents/VRC-2021-Phase-I
+VENV_P1_DIR=~/Documents/VRC-2021-Phase-I/.venv
 
 # create a little command to print out a bar
 bar() {
