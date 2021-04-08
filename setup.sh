@@ -150,7 +150,11 @@ rm mavp2p_v0.6.5_linux_arm64.tar.gz
 sudo mv mavp2p /usr/local/bin/
 
 # remove old service file, skip if doesn't exist
-sudo rm /etc/systemd/system/mavp2p.service || true
+mavp2p_service_file=/etc/systemd/system/mavp2p.service
+
+if [ -f $mavp2p_service_file ] ; then
+    sudo rm $mavp2p_service_file
+fi
 
 # write new service file
 {
@@ -169,7 +173,7 @@ sudo rm /etc/systemd/system/mavp2p.service || true
     echo ''
     echo '[Install]'
     echo 'WantedBy=multi-user.target'
-} | sudo tee -a /etc/systemd/system/mavp2p.service > /dev/null
+} | sudo tee -a $mavp2p_service_file > /dev/null
 # https://stackoverflow.com/a/17491223
 
 # reload systemctl
