@@ -175,8 +175,8 @@ sudo rm /etc/systemd/system/mavp2p.service || true
 # reload systemctl
 sudo systemctl daemon-reload
 # enable the service
-sudo service mavp2p enable
-sudo service mavp2p start
+sudo systemctl enable mavp2p.service
+sudo systemctl start mavp2p.service
 
 bar
 
