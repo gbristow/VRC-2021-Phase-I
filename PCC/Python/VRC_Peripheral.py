@@ -1,3 +1,5 @@
+# VRC Peripheral Python Library
+# Written by Casey Hanner
 import serial
 import time
 from struct import pack, unpack
